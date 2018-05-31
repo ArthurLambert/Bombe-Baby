@@ -1,0 +1,96 @@
+//
+// EPITECH PROJECT, 2018
+// game.cpp
+// File description:
+// game
+//
+
+#include "game.hpp"
+
+Tile::Tile(type_of_tile type) : type(type)
+{}
+
+type_of_tile Tile::get_type()
+{
+	return this.type;
+}
+
+Block::Block() : Tile(BLOCK), is_destroyed(0)
+{
+	bonus = SPEED;//random bonus
+}
+
+bonus_type getbonus() const
+{
+	return this.bonus;
+}
+
+bool getis_destroyed() const
+{
+	return this.is_destroyed;
+}
+
+void destroy()
+{
+	this.is_destroyed = 1;
+}
+
+Map::Map(char* file)
+{}
+
+Map::Map()
+{
+	this.map[1] = {0, 1, 1, 1, 1, 0};
+	this.map[2] = {0, 1, 1, 1, 1, 0};
+	this.map[3] = {0, 1, 1, 1, 1, 0};
+	this.map[4] = {0, 1, 1, 1, 1, 0};
+	this.map[0] = {0, 0, 0, 0, 0, 0};
+	this.map[5] = {0, 1, 1, 1, 1, 0};
+}
+
+vector< vector<Tile> > getmap() const
+{
+	return this.map;
+}
+
+void setmap(vector< vector<Tile> > map)
+{}
+
+Player::Player(vector<char> name, int* pos) : Tile(PLAYER), name(name), pos(pos), pv(3), speed(1), power(1), nb_bombe(1)
+{}
+
+void Player::move(direction dir)
+{
+	
+}
+
+void Player::get_hit()
+{
+	
+}
+
+void Player::pick_bonus(Block bonus)
+{}
+
+int Player::getpv() const
+{
+	
+}
+
+vector<char> Player::getname() const
+{
+	
+}
+
+void Player::drop_bombe()
+{
+	
+}
+
+Bombe::Bombe() : tictac(5)
+{}
+
+void Bombe::explode()
+{
+	//chek a timer(tictac) heach time it is called
+}
