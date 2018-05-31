@@ -22,13 +22,13 @@ public:
 	
 
 private:
-	
+
 };
 
 enum type_of_tile
 {
 	BLOCK,
-	INDESTRUCTIBLE,
+	WALL,
 	PLAYER,
 	BOMBE
 };
@@ -58,33 +58,6 @@ public:
 
 private:
 	type_of_tile type;
-};
-
-class Block : public Tile
-{
-public :
-	Block();
-	~Block(Map map);
-	~Block() = default;
-	bonus_type getbonus() const;
-	bool getis_destroyed() const;
-	void destroy();
-
-private:
-	bonus_type bonus;
-	bool is_destroyed;
-};
-
-class Bombe : public Tile
-{
-public:
-	Bombe(Map map);
-	~Bombe() = default;
-	void explode(Map map);
-
-private:
-	int tictac;
-	int power;
 };
 
 #endif
