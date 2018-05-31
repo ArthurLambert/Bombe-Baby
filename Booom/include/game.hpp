@@ -11,7 +11,19 @@
 #include "main.hpp"
 #include <vector>
 
-#define MAP_SIZE 17*17
+//#define MAP_SIZE 17*17
+
+class Game
+{
+public:
+	Game();
+	~Game() = default;
+	void play();
+	
+
+private:
+	
+};
 
 enum type_of_tile
 {
@@ -61,40 +73,6 @@ public :
 private:
 	bonus_type bonus;
 	bool is_destroyed;
-};
-
-class Map
-{
-public:
-	Map(char* file);
-	Map(); //test
-	~Map() = default;
-	void move(Player player, direction dir);
-	void create(Player player, type_of_tile type)
-
-private:
- vector< vector<Tile*> > map;
-	int size;
-};
-
-class Player : public Tile
-{
-public:
-	Player(vector<char> name, Map map);
-	~Player() = default;
-	void move(direction dir, Map map);
-	void get_hit(Map map);
-	void pick_bonus(Block bonus, Map map);
-	int getpv() const;
-	vector<char> getname() const;
-	void drop_bombe(Map map);
-
-private:
-	int pv;
-	vector<char> name;
-	int nb_bombe;
-	int speed;
-	int power;
 };
 
 class Bombe : public Tile

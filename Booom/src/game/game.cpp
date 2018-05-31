@@ -7,6 +7,7 @@
 
 #include "game.hpp"
 
+
 Tile::Tile(type_of_tile type) : type(type)
 {}
 
@@ -54,7 +55,7 @@ Map::Map()
 	this.size = 6;
 }
 
-void Map::move(Player player, direction dir)
+void Map::move_tile(Tile tile, direction dir)
 {
 	
 }
@@ -69,7 +70,7 @@ Player::Player(vector<char> name) : Tile(PLAYER), name(name), pv(3), speed(1), p
 
 void Player::move(direction dir, Map map)
 {
-	map.move(this, dir);
+	map.move_player(this, dir);
 }
 
 void Player::get_hit(Map map)

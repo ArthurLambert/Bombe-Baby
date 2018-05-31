@@ -20,6 +20,11 @@ Block::Block() : Tile(BLOCK), is_destroyed(0)
 	bonus = SPEED;//random bonus
 }
 
+Block::~Block(Map map)
+{
+	map.move(this, CEMETERY);
+}
+
 bonus_type getbonus() const
 {
 	return this.bonus;
@@ -46,49 +51,64 @@ Map::Map()
 	this.map[4] = {0, 1, 1, 1, 1, 0};
 	this.map[0] = {0, 0, 0, 0, 0, 0};
 	this.map[5] = {0, 1, 1, 1, 1, 0};
+	this.size = 6;
 }
 
-vector< vector<Tile> > getmap() const
-{
-	return this.map;
-}
-
-void setmap(vector< vector<Tile> > map)
-{}
-
-Player::Player(vector<char> name, int* pos) : Tile(PLAYER), name(name), pos(pos), pv(3), speed(1), power(1), nb_bombe(1)
-{}
-
-void Player::move(direction dir)
+void Map::move(Player player, direction dir)
 {
 	
 }
 
-void Player::get_hit()
+void Map::create(Player player, type_of_tile type)
 {
 	
 }
 
-void Player::pick_bonus(Block bonus)
+Player::Player(vector<char> name) : Tile(PLAYER), name(name), pv(3), speed(1), power(1), nb_bombe(1)
 {}
+
+void Player::move(direction dir, Map map)
+{
+	map.move(this, dir);
+}
+
+void Player::get_hit(Map map)
+{
+	this.pv -= 1;
+	if (pv = 0)
+		this.move(cemetery, map);
+}
+
+void Player::pick_bonus(Block block)
+{
+	bonus_type bonus = block.getbonus();
+	switch (bonus) {
+	case SPEED:
+		this.speed += 1;
+		break;
+	}
+	//destructor of block todo
+}
 
 int Player::getpv() const
 {
-	
+	return this.pv;
 }
 
 vector<char> Player::getname() const
 {
-	
+	return this.name;
 }
 
-void Player::drop_bombe()
+void Player::drop_bombe(Map map)
 {
-	
+	Bombe(this, map);
 }
 
-Bombe::Bombe() : tictac(5)
-{}
+Bombe::Bombe(Player player, Map map) : Tile(BOMBE), tictac(5)
+{
+	map.create(player, BOMBE);
+}
 
 void Bombe::explode()
 {
