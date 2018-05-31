@@ -16,10 +16,18 @@ public:
 	Bombe(Map map);
 	~Bombe() = default;
 	void explode(Map map);
+	void tic();
 
 private:
 	int tictac;
 	int power;
+};
+
+class Fire : public Tile
+{
+public:
+	Fire();
+	~Fire();
 };
 
 #endif

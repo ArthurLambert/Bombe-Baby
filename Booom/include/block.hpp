@@ -16,6 +16,7 @@ public :
 	Block();
 	~Block(Map map);
 	~Block() = default;
+	bonus generation();
 
 private:
 };

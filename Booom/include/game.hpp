@@ -18,11 +18,11 @@ class Game
 public:
 	Game();
 	~Game() = default;
-	void play();
-	
+	void play();	
+	void refresh_map(Map map);
 
 private:
-
+	Map map;
 };
 
 enum type_of_tile
@@ -30,7 +30,8 @@ enum type_of_tile
 	BLOCK,
 	WALL,
 	PLAYER,
-	BOMBE
+	BOMBE,
+	GROUDE
 };
 
 enum bonus_type
@@ -45,8 +46,7 @@ enum direction
 	UP,
 	DOWN,
 	LEFT,
-	RIGHT,
-	CEMETERY
+	RIGHT
 };
 
 class Tile
