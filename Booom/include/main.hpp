@@ -13,6 +13,5 @@
 #include "game.hpp"
 #include "graph.hpp"
 #include <vector>
-#include <ncurses>
 
 #endif

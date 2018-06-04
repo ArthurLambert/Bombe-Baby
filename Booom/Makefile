@@ -5,7 +5,7 @@
 ## makefile
 ##
 
-CC	=	g++ -std=c++11 -lncurses
+CC	=	g++ -std=c++11
 
 SRC	=	src/main.cpp	\
 		src/game/*.cpp

@@ -8,11 +8,15 @@
 #ifndef BONUS_HPP_
 #define BONUS_HPP_
 
+#include "map.hpp"
+#include "tile.hpp"
+
 class Bonus : public Tile
 {
 public:
 	Bonus();
 	~Bonus() = default;
+	bonus_type getbonus();
 
 private:
 	bonus_type bonus;

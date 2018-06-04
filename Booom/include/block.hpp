@@ -8,15 +8,16 @@
 #ifndef BLOCK_HPP_
 #define BLOCK_HPP_
 
+#include "bonus.hpp"
+#include "tile.hpp"
 #include "map.hpp"
 
 class Block : public Tile
 {
 public :
 	Block();
-	~Block(Map map);
 	~Block() = default;
-	bonus generation();
+	void destroy_block(Map map);
 
 private:
 };

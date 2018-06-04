@@ -9,23 +9,24 @@
 #define PLAYER_HPP_
 
 #include "map.hpp"
+#include "bonus.hpp"
 
 class Player : public Tile
 {
 public:
-	Player(vector<char> name, Map map);
+	Player(std::vector<char> name, Map map);
 	~Player() = default;
 	void move(direction dir, Map map);
 	void get_hit(Map map);
-	void pick_bonus(Block bonus, Map map);
+	void pick_bonus(Bonus bonus , Map map);
 	int getpv() const;
-	vector<char> getname() const;
+	std::vector<char> getname() const;
 	void drop_bombe(Map map);
 	direction getimput();
 
 private:
 	int pv;
-	vector<char> name;
+	std::vector<char> name;
 	int nb_bombe;
 	int speed;
 	int power;

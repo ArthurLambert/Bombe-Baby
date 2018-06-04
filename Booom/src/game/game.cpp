@@ -7,6 +7,43 @@
 
 #include "game.hpp"
 
+Game::Game()
+{
+	//generate the map and all tiles
+}
+
+void Game::play()
+{
+	//start the game then run the game with a loop calling refresh_map and refresh_graphical..
+}
+
+void Game::refresh_map()
+{
+	//function called by the loop in play
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 
 Tile::Tile(type_of_tile type) : type(type)
 {}
@@ -39,30 +76,6 @@ bool getis_destroyed() const
 void destroy()
 {
 	this.is_destroyed = 1;
-}
-
-Map::Map(char* file)
-{}
-
-Map::Map()
-{
-	this.map[1] = {0, 1, 1, 1, 1, 0};
-	this.map[2] = {0, 1, 1, 1, 1, 0};
-	this.map[3] = {0, 1, 1, 1, 1, 0};
-	this.map[4] = {0, 1, 1, 1, 1, 0};
-	this.map[0] = {0, 0, 0, 0, 0, 0};
-	this.map[5] = {0, 1, 1, 1, 1, 0};
-	this.size = 6;
-}
-
-void Map::move_tile(Tile tile, direction dir)
-{
-	
-}
-
-void Map::create(Player player, type_of_tile type)
-{
-	
 }
 
 Player::Player(vector<char> name) : Tile(PLAYER), name(name), pv(3), speed(1), power(1), nb_bombe(1)
@@ -115,3 +128,4 @@ void Bombe::explode()
 {
 	//chek a timer(tictac) heach time it is called
 }
+*/
