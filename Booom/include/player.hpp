@@ -14,11 +14,11 @@
 class Player : public Tile
 {
 public:
-	Player(std::vector<char> name, Map map);
+	Player(std::vector<char> name, Map map, int pos);
 	~Player() = default;
 	void move(direction dir, Map map);
 	void get_hit(Map map);
-	void pick_bonus(Bonus bonus , Map map);
+	void pick_bonus(Bonus *bonus , Map map);
 	int getpv() const;
 	std::vector<char> getname() const;
 	void drop_bombe(Map map);

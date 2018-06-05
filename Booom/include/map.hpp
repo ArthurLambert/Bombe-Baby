@@ -20,6 +20,9 @@ public:
 	Stack();
 	~Stack() = default;
 	std::vector<Tile*> getstack() const;
+	void add_to_stack(Tile *tile);
+	bool rm_from_stack(Tile *tile);
+	void clear_stack();
 
 private:
 	std::vector<Tile*> stack;
@@ -31,30 +34,19 @@ public:
 	Map(std::string file);
 	Map(); //test
 	~Map() = default;
-	void move_tile(Tile *tile, direction dir);
-	Tile get_tile_dir(Tile *tile, direction dir);
-	void add_tile(Tile *pos, Tile *tile, type_of_tile type);
+	bool move_tile(Tile *tile, direction dir);
+	Stack get_tile_dir(Tile *tile, direction dir);
+	void add_tile(Tile *tile);
 	void rm_tile(Tile *tile);
-	void reinit_tile(Tile *pos, Tile *tile, type_of_tile type);
+	void reinit_tile(Tile *tile);
+	int get_next_pos(int pos, direction dir);
 	
 	//display for test only
 	void display_map_on_console();
 
 private:
-	std::array<Stack*, 36> g_map; //second parrameter of the array is always MAP_SIZE^2
+	std::array<Stack*, 36> map; //second parrameter of the array is always MAP_SIZE^2
 	int size;
 };
 
-/*
-class Position
-{
-public:
-	Position();
-	~Position() = default;
-
-private:
-	int x;
-	int y;
-};
-*/
 #endif

@@ -7,9 +7,9 @@
 
 #include "bombe.hpp"
 
-Fire::Fire(Map map, Tile *pos, int power, direction dir) : Tile(FIRE), duration(power), dir(dir)
+Fire::Fire(Map map, int pos, int power, direction dir) : Tile(FIRE, pos), duration(power), dir(dir)
 {
-	map.add_tile(pos, this, FIRE);
+	map.add_tile(this);
 }
 
 void Fire::extinct(Map map)
@@ -22,13 +22,14 @@ void Fire::extinct(Map map)
 		this->duration--;
 }
 
-Bombe::Bombe(Player *player, Map map) : Tile(BOMBE), tictac(300)
+Bombe::Bombe(int pos, Map map, int power) : Tile(BOMBE, pos), tictac(300), power(power)
 {
-	map.add_tile(player, this, BOMBE);
+	map.add_tile(this);
 }
 
 void Bombe::explode(Map map)
 {
+	Bonus *bonus;
 	if (this->power > 0) {
 		this->spread(map, UP);
 		this->spread(map, DOWN);
@@ -37,6 +38,8 @@ void Bombe::explode(Map map)
 		this->power--;
 	}
 	else {
+		bonus = new Bonus(this->get_pos());
+		map.add_tile(bonus);
 		map.rm_tile(this);
 		this->~Bombe();
 	}
@@ -52,13 +55,5 @@ void Bombe::tic(Map map)
 
 void Bombe::spread(Map map, direction dir)
 {
-	Fire *fire = new Fire(map, this, this->power, dir);
-
-	while ((map.get_tile_dir(this, dir)).get_type() == FIRE) {
-		map.move_tile(fire, dir);
-	}
-	if ((map.get_tile_dir(this, dir)).get_type() == GROUND) {
-		map.move_tile(fire, dir);
-	}
 	//?
 }

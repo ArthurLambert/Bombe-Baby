@@ -15,7 +15,7 @@ class Game
 public:
 	Game();
 	~Game() = default;
-	void play();	
+	void play();
 	void refresh_map();
 
 private:

@@ -7,10 +7,20 @@
 
 #include "tile.hpp"
 
-Tile::Tile(type_of_tile type) : type(type)
+Tile::Tile(type_of_tile type, int pos) : type(type), pos(pos) 
 {}
 
 type_of_tile Tile::get_type() const
 {
 	return this->type;
+}
+
+int Tile::get_pos() const
+{
+	return this->pos;
+}
+
+void Tile::set_pos(int pos)
+{
+	this->pos = pos;
 }

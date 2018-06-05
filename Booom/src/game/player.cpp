@@ -8,7 +8,7 @@
 #include "player.hpp"
 #include "bombe.hpp"
 
-Player::Player(std::vector<char> name, Map map) : Tile(PLAYER), pv(3), name(name), nb_bombe(1), speed(1), power(1)
+Player::Player(std::vector<char> name, Map map, int pos) : Tile(PLAYER, pos), pv(3), name(name), nb_bombe(1), speed(1), power(1)
 {
 	//config todo
 }
@@ -27,11 +27,12 @@ void Player::get_hit(Map map)
 	}
 }
 
-void Player::pick_bonus(Bonus bonus, Map map)
+void Player::pick_bonus(Bonus *bonus, Map map)
 {
-	if (bonus.getbonus() == SPEED)
+	if (bonus->getbonus() == SPEED)
 		this->speed++;
-	map.rm_tile(&bonus);
+	map.rm_tile(bonus);
+	bonus->~Bonus();
 }
 
 int Player::getpv() const
@@ -46,7 +47,10 @@ std::vector<char> Player::getname() const
 
 void Player::drop_bombe(Map map)
 {
-	new Bombe(this, map);
+	if (this->nb_bombe != 0) {
+		new Bombe(this->get_pos(), map, this->power);
+		this->nb_bombe--;
+	}
 }
 
 direction Player::getimput()

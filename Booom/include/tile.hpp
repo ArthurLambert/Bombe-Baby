@@ -16,7 +16,8 @@ enum type_of_tile
 	BOMBE,
 	GROUND,
 	BONUS,
-	FIRE
+	FIRE,
+	VOID
 };
 
 enum bonus_type
@@ -40,12 +41,15 @@ enum direction
 class Tile
 {
 public:
-	Tile(type_of_tile type);
+	Tile(type_of_tile type, int pos);
 	~Tile() = default;
 	type_of_tile get_type() const;
+	int get_pos() const;
+	void set_pos(int pos);
 
 private:
 	type_of_tile type;
+	int pos;
 };
 
 #endif

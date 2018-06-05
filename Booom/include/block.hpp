@@ -15,7 +15,7 @@
 class Block : public Tile
 {
 public :
-	Block();
+	Block(int pos);
 	~Block() = default;
 	void destroy_block(Map map);
 

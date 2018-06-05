@@ -8,14 +8,17 @@
 #include "block.hpp"
 #include "bombe.hpp"
 
-Block::Block() : Tile(BLOCK)
+Block::Block(int pos) : Tile(BLOCK, pos)
 {}
 
 void Block::destroy_block(Map map)
 {
-	Bonus *bonus = new Bonus();
+	Bonus *bonus = new Bonus(this->get_pos());
 	if (bonus->getbonus() != NONE)
-		map.reinit_tile(this, bonus, BONUS);
-	else
+		map.reinit_tile(bonus);
+	else {
 		bonus->~Bonus();
+		map.rm_tile(this);
+		this->~Block();
+	}
 }

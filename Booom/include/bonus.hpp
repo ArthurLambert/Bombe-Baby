@@ -14,7 +14,7 @@
 class Bonus : public Tile
 {
 public:
-	Bonus();
+	Bonus(int pos);
 	~Bonus() = default;
 	bonus_type getbonus();
 

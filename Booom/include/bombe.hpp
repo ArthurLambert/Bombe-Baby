@@ -9,13 +9,13 @@
 #define BOMBE_HPP_
 
 #include "map.hpp"
-#include "player.hpp"
 #include "tile.hpp"
+#include "bonus.hpp"
 
 class Bombe : public Tile
 {
 public:
-	Bombe(Player *player, Map map);
+	Bombe(int pos, Map map, int power);
 	~Bombe() = default;
 	void explode(Map map);
 	void tic(Map map);
@@ -29,7 +29,7 @@ private:
 class Fire : public Tile
 {
 public:
-	Fire(Map map, Tile *pos, int power, direction dir);
+	Fire(Map map, int pos, int power, direction dir);
 	~Fire() = default;
 	void extinct(Map map);
 

@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <ctime>
 
-Bonus::Bonus() : Tile(BONUS)
+Bonus::Bonus(int pos) : Tile(BONUS, pos)
 {
 	int random;
 
