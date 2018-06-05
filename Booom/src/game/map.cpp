@@ -10,7 +10,7 @@
 Map::Map(std::string file)
 {}
 
-Map::Map() : size(MAP_SIZE)
+Map::Map() : size(MAP_SIZE * MAP_SIZE)
 {
 	int i = 0;
 
@@ -73,12 +73,14 @@ int Map::get_next_pos(int pos, direction dir)
 void Map::display_map_on_console()
 {
 	int i = 0;
+	int j = 0;
 
-	while (i <= 36) {
-		for (size_t j = 0; j < map[i]->getstack().size(); j++) {
-			printf("%d", (map[i]->getstack())[j]->get_type());
-			i++;
+	for (i = 0; i < MAP_SIZE; i++) {
+		for (j = 0; j < MAP_SIZE; j++) {
+			printf("%d", (this->map[i + j * MAP_SIZE]->getstack())[0]->get_type());
 		}
+		j = 0;
+		printf("\n");
 	}
 }
 

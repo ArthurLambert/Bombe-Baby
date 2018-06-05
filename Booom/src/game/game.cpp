@@ -9,12 +9,13 @@
 
 Game::Game()
 {
-	//generate the map and all tiles
+	this->map = new Map();
+	this->play();
 }
 
 void Game::play()
 {
-	//start the game then run the game with a loop calling refresh_map and refresh_graphical..
+	this->map->display_map_on_console();
 }
 
 void Game::refresh_map()

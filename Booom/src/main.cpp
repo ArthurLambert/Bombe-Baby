@@ -11,6 +11,6 @@
 
 int main(int ac, char* av[])
 {
-	Map *map= new Map("./files/map");
+	new Game();
 	return 0;
 }

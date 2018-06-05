@@ -19,7 +19,7 @@ public:
 	void refresh_map();
 
 private:
-	Map map;
+	Map *map;
 };
 
 #endif
