@@ -6,7 +6,6 @@
 //
 
 #include "block.hpp"
-#include "bombe.hpp"
 
 Block::Block(int pos) : Tile(BLOCK, pos)
 {}

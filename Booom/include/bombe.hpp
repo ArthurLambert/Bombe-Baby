@@ -11,6 +11,7 @@
 #include "map.hpp"
 #include "tile.hpp"
 #include "bonus.hpp"
+#include "block.hpp"
 
 class Bombe : public Tile
 {
@@ -20,6 +21,9 @@ public:
 	void explode(Map map);
 	void tic(Map map);
 	void spread(Map map, direction dir);
+	bool is_fire(Stack stack);
+	bool can_start_fire(Stack stack);
+	void try_destroy(Map map, Stack stack);
 
 private:
 	int tictac;

@@ -25,7 +25,7 @@ bool Map::move_tile(Tile *tile, direction dir)
 {
 	Stack next_tile;
 
-	next_tile = (this->get_tile_dir(tile, dir));
+	next_tile = (this->get_tile_dir(tile->get_pos(), dir));
 	for (auto &i : next_tile.getstack()) {
 		if (i->get_type() != GROUND)
 			return false;
@@ -36,9 +36,9 @@ bool Map::move_tile(Tile *tile, direction dir)
 	return true;
 }
 
-Stack Map::get_tile_dir(Tile *tile, direction dir)
+Stack Map::get_tile_dir(int pos, direction dir)
 {
-	return *map[get_next_pos(tile->get_pos(), dir)];
+	return *map[get_next_pos(pos, dir)];
 }
 
 void Map::add_tile(Tile *tile)
