@@ -24,6 +24,7 @@ public:
 	bool is_fire(Stack stack);
 	bool can_start_fire(Stack stack);
 	void try_destroy(Map map, Stack stack);
+	void update(Map map);
 
 private:
 	int tictac;
@@ -36,6 +37,7 @@ public:
 	Fire(Map map, int pos, int power, direction dir);
 	~Fire() = default;
 	void extinct(Map map);
+	void update(Map map);
 
 private:
 	int duration;

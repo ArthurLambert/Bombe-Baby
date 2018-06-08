@@ -7,12 +7,14 @@
 
 #include "bombe.hpp"
 
+//fire members functions
+
 Fire::Fire(Map map, int pos, int power, direction dir) : Tile(FIRE, pos), duration(power), dir(dir)
 {
 	map.add_tile(this);
 }
 
-void Fire::extinct(Map map)
+void Fire::update(Map map)
 {
 	if (this->duration == 0) {
 		map.rm_tile(this);
@@ -21,6 +23,8 @@ void Fire::extinct(Map map)
 	else
 		this->duration--;
 }
+
+//Bombe members functions
 
 Bombe::Bombe(int pos, Map map, int power) : Tile(BOMBE, pos), tictac(300), power(power)
 {
@@ -94,4 +98,13 @@ void Bombe::try_destroy(Map map, Stack stack)
 			((Block*)i)->destroy_block(map);
 		}
 	}
+}
+
+void Bombe::update(Map map)
+{
+	for (auto &i : (map.get_tile(this->get_pos())).getstack()) {
+		if (i->get_type() == FIRE)
+			this->tictac = 0;
+	}
+	this->tic(map);
 }

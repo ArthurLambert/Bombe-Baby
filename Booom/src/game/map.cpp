@@ -41,6 +41,11 @@ Stack Map::get_tile_dir(int pos, direction dir)
 	return *map[get_next_pos(pos, dir)];
 }
 
+Stack Map::get_tile(int pos)
+{
+	return *map[pos];
+}
+
 void Map::add_tile(Tile *tile)
 {
 	this->map[tile->get_pos()]->add_to_stack(tile);

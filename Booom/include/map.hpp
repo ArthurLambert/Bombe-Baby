@@ -36,6 +36,7 @@ public:
 	~Map() = default;
 	bool move_tile(Tile *tile, direction dir);
 	Stack get_tile_dir(int pos, direction dir);
+	Stack get_tile(int pos);
 	void add_tile(Tile *tile);
 	void rm_tile(Tile *tile);
 	void reinit_tile(Tile *tile);
