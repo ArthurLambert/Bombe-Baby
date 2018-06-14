@@ -1,0 +1,26 @@
+//
+// EPITECH PROJECT, 2018
+// game
+// File description:
+// game
+//
+
+#ifndef INTERFACE_HPP_
+#define INTERFACE_HPP_
+
+#include "myeventgame.hpp"
+
+class Interface
+{
+public:
+	Interface();
+	~Interface() = default;
+	void draw_tile(Tile *tile, int x, int y);
+	void draw_map(Map *map);
+	SAppContext* getcontext();
+
+protected:
+	SAppContext *context;
+};
+
+#endif /* !GAME_HPP_ */

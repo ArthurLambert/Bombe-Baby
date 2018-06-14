@@ -6,10 +6,8 @@
 //
 
 #include "main.hpp"
-#include "game.hpp"
-#include "graph.hpp"
 
-int main(int ac, char* av[])
+int main()
 {
 	new Game();
 	return 0;

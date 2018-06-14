@@ -1,0 +1,29 @@
+//
+// EPITECH PROJECT, 2018
+// game.hpp
+// File description:
+// game header
+//
+
+#ifndef GAME_HPP_
+#define GAME_HPP_
+
+#include "map.hpp"
+#include "interface.hpp"
+#include "bombe.hpp"
+#include "player.hpp"
+#include <unistd.h>
+
+class Game
+{
+public:
+	Game();
+	~Game() = default;
+	void play();
+	bool refresh_map(input_key input, Interface *interface);
+
+private:
+	Map *map;
+};
+
+#endif
